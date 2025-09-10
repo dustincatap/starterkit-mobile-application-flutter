@@ -80,7 +80,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
 fi
 
-git clone https://github.com/ERNI-Academy/starterkit-mobile-application-flutter.git "$DIR/$PROJECT_REPO_NAME"
+git clone https://github.com/dustincatap/starterkit-mobile-application-flutter.git "$DIR/$PROJECT_REPO_NAME"
 rm -rf "$DIR/$PROJECT_REPO_NAME/.git"
 rm -rf "$DIR/$PROJECT_REPO_NAME/.github"
 rm -rf "$DIR/$PROJECT_REPO_NAME/.gitmodules"

@@ -1,22 +1,22 @@
-# ERNI-Academy Open Source Security Policies and Procedures
+# Open Source Security Policies and Procedures
 
 This document outlines security procedures and general policies for the
-ERNI Accademy Open Source projects as found on <https://github.com/ERNI-Academy>.
+Open Source projects.
 
-- [ERNI-Academy Open Source Security Policies and Procedures](#erni-academy-open-source-security-policies-and-procedures)
+- [Open Source Security Policies and Procedures](#open-source-security-policies-and-procedures)
   - [Reporting a Vulnerability](#reporting-a-vulnerability)
   - [Disclosure Policy](#disclosure-policy)
 
 ## Reporting a Vulnerability
 
-The ERNI-Academy OSS team and community take all security vulnerabilities
+The OSS team and community take all security vulnerabilities
 seriously. Thank you for improving the security of our open source
 software. We appreciate your efforts and responsible disclosure and will
 make every effort to acknowledge your contributions.
 
-Report security vulnerabilities by emailing the ERNI-Academy security team at:
+Report security vulnerabilities by emailing at:
 
-    academy@betterask.erni
+    dustincatap@gmail.com
 
 The lead maintainer will acknowledge your email, and will
 send a more detailed response indicating the next steps in
