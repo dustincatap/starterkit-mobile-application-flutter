@@ -3,11 +3,7 @@
 import 'package:flutter/widgets.dart';
 
 class ViewModelProvider<T> extends InheritedWidget {
-  const ViewModelProvider({
-    required this.viewModel,
-    required super.child,
-    super.key,
-  });
+  const ViewModelProvider({required this.viewModel, required super.child, super.key});
 
   final T viewModel;
 

@@ -49,6 +49,7 @@ class _AppState extends State<App> {
                 theme: ThemeData(
                   useMaterial3: true,
                   colorSchemeSeed: Colors.blue,
+                  fontFamily: 'Roboto',
                 ),
                 localizationsDelegates: const <LocalizationsDelegate<Object>>[
                   Il8n.delegate,

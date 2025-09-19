@@ -16,6 +16,7 @@ dependencies:
   drift: ^2.28.1
   drift_flutter: ^0.2.5
   equatable: ^2.0.7
+  file: ^7.0.1
   flutter:
     sdk: flutter
   flutter_localization: ^0.3.3
@@ -28,6 +29,7 @@ dependencies:
   meta: ^1.16.0
   path: ^1.9.1
   path_provider: ^2.1.5
+  platform: ^3.1.6
   retrofit: ^4.6.0
   uuid: ^4.5.1
 
@@ -39,7 +41,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   full_coverage: ^1.0.0
-  golden_toolkit: ^0.15.0
   injectable_generator: ^2.7.0
   intl_utils: ^2.8.11
   json_serializable: ^6.9.5
@@ -47,6 +48,17 @@ dev_dependencies:
   retrofit_generator: ^9.7.0
 
 flutter:
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
   uses-material-design: true
 
 flutter_gen:

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:starterkit_app/common/localization/generated/l10n.dart';
@@ -99,76 +98,112 @@ void main() {
       });
     }
 
-    testGoldens('AppBar should show correct title when shown', (WidgetTester tester) async {
-      setUpApi<List<dynamic>>(
-        expectedPath: endsWith('/posts'),
-        expectedMethod: matches('GET'),
-        expectedResponseFile: 'posts.json',
-      );
-      when(mockConnectivityService.isConnected()).thenAnswer((_) async => true);
+    group('AppBar should show correct title when shown', () {
+      for (final Device device in Device.all) {
+        testWidgets('for ${device.name}', (WidgetTester tester) async {
+          tester.setupDevice(device);
 
-      await tester.pumpWidget(const App(initialRoute: PostsViewRoute()));
-      await tester.pumpAndSettle();
-
-      await tester.matchGolden('posts_view_app_bar_title');
-      expect(find.text(il8n.posts), findsOneWidget);
-    });
-
-    testGoldens('ListView should show posts when loaded', (WidgetTester tester) async {
-      setUpApi<List<dynamic>>(
-        expectedPath: endsWith('/posts'),
-        expectedMethod: matches('GET'),
-        expectedResponseFile: 'posts.json',
-      );
-      when(mockConnectivityService.isConnected()).thenAnswer((_) async => true);
-
-      await tester.pumpWidget(const App(initialRoute: PostsViewRoute()));
-      await tester.pumpAndSettle();
-
-      await tester.matchGolden('posts_view_loaded');
-      expect(find.byType(ListView), findsOneWidget);
-      expect(find.byType(ListTile), findsAtLeastNWidgets(1));
-    });
-
-    testGoldens('ListView should show error message when posts failed to load', (WidgetTester tester) async {
-      setUpApiToFail<List<dynamic>>(
-        expectedPath: endsWith('/posts'),
-        expectedMethod: matches('GET'),
-      );
-      when(mockConnectivityService.isConnected()).thenAnswer((_) async => true);
-
-      await tester.pumpWidget(const App(initialRoute: PostsViewRoute()));
-      await tester.pumpAndSettle();
-
-      await tester.matchGolden('posts_view_error');
-      expect(find.byType(ListView), findsNothing);
-      expect(find.text(il8n.failedToGetPosts), findsOneWidget);
-    });
-
-    testGoldens('ListTile should navigate to post details when post tapped', (WidgetTester tester) async {
-      setUpApi<List<dynamic>>(
-        expectedPath: endsWith('/posts'),
-        expectedMethod: matches('GET'),
-        expectedResponseFile: 'posts.json',
-        onAnswer: () {
-          reset(mockDio);
-          setUpApi<Map<String, dynamic>>(
-            expectedPath: contains('/posts/'),
+          setUpApi<List<dynamic>>(
+            expectedPath: endsWith('/posts'),
             expectedMethod: matches('GET'),
-            expectedResponseFile: 'post.json',
+            expectedResponseFile: 'posts.json',
           );
-        },
-      );
-      when(mockConnectivityService.isConnected()).thenAnswer((_) async => true);
+          when(mockConnectivityService.isConnected()).thenAnswer((_) async => true);
 
-      await tester.pumpWidget(const App(initialRoute: PostsViewRoute()));
-      await tester.pumpAndSettle();
-      await tester.tap(find.byType(ListTile));
-      await tester.pumpAndSettle();
+          await tester.pumpWidget(const App(initialRoute: PostsViewRoute()));
+          await tester.pumpAndSettle();
 
-      await tester.matchGolden('posts_view_navigate_to_post_details_view');
-      expect(find.byType(PostsView), findsNothing);
-      expect(find.byType(PostDetailsView), findsOneWidget);
+          await expectLater(
+            find.byType(PostsView),
+            tester.matchGoldenFile('posts_view_app_bar_title', device),
+          );
+          expect(find.text(il8n.posts), findsOneWidget);
+        });
+      }
+    });
+
+    group('ListView should show posts when loaded', () {
+      for (final Device device in Device.all) {
+        testWidgets('for ${device.name}', (WidgetTester tester) async {
+          tester.setupDevice(device);
+
+          setUpApi<List<dynamic>>(
+            expectedPath: endsWith('/posts'),
+            expectedMethod: matches('GET'),
+            expectedResponseFile: 'posts.json',
+          );
+          when(mockConnectivityService.isConnected()).thenAnswer((_) async => true);
+
+          await tester.pumpWidget(const App(initialRoute: PostsViewRoute()));
+          await tester.pumpAndSettle();
+
+          await expectLater(
+            find.byType(PostsView),
+            tester.matchGoldenFile('posts_view_loaded', device),
+          );
+          expect(find.byType(ListView), findsOneWidget);
+          expect(find.byType(ListTile), findsAtLeastNWidgets(1));
+        });
+      }
+    });
+
+    group('ListView should show error message when posts failed to load', () {
+      for (final Device device in Device.all) {
+        testWidgets('for ${device.name}', (WidgetTester tester) async {
+          tester.setupDevice(device);
+
+          setUpApiToFail<List<dynamic>>(
+            expectedPath: endsWith('/posts'),
+            expectedMethod: matches('GET'),
+          );
+          when(mockConnectivityService.isConnected()).thenAnswer((_) async => true);
+
+          await tester.pumpWidget(const App(initialRoute: PostsViewRoute()));
+          await tester.pumpAndSettle();
+
+          await expectLater(
+            find.byType(PostsView),
+            tester.matchGoldenFile('posts_view_error', device),
+          );
+          expect(find.byType(ListView), findsNothing);
+          expect(find.text(il8n.failedToGetPosts), findsOneWidget);
+        });
+      }
+    });
+
+    group('ListTile should navigate to post details when post tapped', () {
+      for (final Device device in Device.all) {
+        testWidgets('for ${device.name}', (WidgetTester tester) async {
+          tester.setupDevice(device);
+
+          setUpApi<List<dynamic>>(
+            expectedPath: endsWith('/posts'),
+            expectedMethod: matches('GET'),
+            expectedResponseFile: 'posts.json',
+            onAnswer: () {
+              reset(mockDio);
+              setUpApi<Map<String, dynamic>>(
+                expectedPath: contains('/posts/'),
+                expectedMethod: matches('GET'),
+                expectedResponseFile: 'post.json',
+              );
+            },
+          );
+          when(mockConnectivityService.isConnected()).thenAnswer((_) async => true);
+
+          await tester.pumpWidget(const App(initialRoute: PostsViewRoute()));
+          await tester.pumpAndSettle();
+          await tester.tap(find.byType(ListTile));
+          await tester.pumpAndSettle();
+
+          await expectLater(
+            find.byType(PostDetailsView),
+            tester.matchGoldenFile('posts_view_navigate_to_post_details_view', device),
+          );
+          expect(find.byType(PostsView), findsNothing);
+          expect(find.byType(PostDetailsView), findsOneWidget);
+        });
+      }
     });
   });
 }
