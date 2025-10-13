@@ -30,8 +30,6 @@ Before starting you send us an email to this account so we can add you to our co
 
 ## How to contribute
 
-Whether you want to contribute to your new repository or you want to update ERNI awesome resource list the process is the same:
-
 1. [**Fork the repository**][fork] to your personal Github. Forking is basically an easy way to make a duplicate of the repository to your own account.
 2. [**Clone**][clone] the project to your own machine.
 

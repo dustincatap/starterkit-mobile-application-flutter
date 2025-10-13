@@ -11,7 +11,6 @@ import 'package:starterkit_app/features/post/domain/models/posts_list_state.dart
 import 'package:starterkit_app/features/post/domain/services/post_service.dart';
 import 'package:starterkit_app/features/post/presentation/view_models/posts_view_model.dart';
 
-import '../../../../../test_matchers.dart';
 import '../../../../../test_utils.dart';
 import 'posts_view_model_test.mocks.dart';
 
@@ -22,13 +21,11 @@ import 'posts_view_model_test.mocks.dart';
 ])
 void main() {
   group(PostsViewModel, () {
-    late MockLogger mockLogger;
     late MockNavigationService mockNavigationService;
     late MockPostService mockPostService;
     late Il8n il8n;
 
     setUp(() async {
-      mockLogger = MockLogger();
       mockNavigationService = MockNavigationService();
       mockPostService = MockPostService();
       il8n = await setupLocale();
@@ -37,7 +34,7 @@ void main() {
     });
 
     PostsViewModel createUnitToTest() {
-      return PostsViewModel(mockLogger, mockNavigationService, mockPostService);
+      return PostsViewModel(mockNavigationService, mockPostService);
     }
 
     group('onInitialize', () {
@@ -61,7 +58,6 @@ void main() {
         await unit.onInitialize(null);
 
         verify(mockPostService.getPosts()).called(1);
-        verify(mockLogger.log(LogLevel.error, anyInstanceOf<String>())).called(1);
         await expectLater(unit.postsState.value, equals(expectedPostState));
       });
     });

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:context_plus/context_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:starterkit_app/common/localization/generated/l10n.dart';
@@ -32,33 +33,36 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<void>(
-      future: _initialRouteCompleter.future,
-      builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-        if (snapshot.connectionState != ConnectionState.done) {
-          return const SizedBox.shrink();
-        }
+    return ContextPlus.root(
+      child: FutureBuilder<void>(
+        future: _initialRouteCompleter.future,
+        builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+          if (snapshot.connectionState != ConnectionState.done) {
+            return const SizedBox.shrink();
+          }
 
-        return AutoViewModelBuilder<AppViewModel>(
-          builder: (BuildContext context, AppViewModel viewModel) {
-            return MaterialApp.router(
-              routeInformationParser: _rootStackRouter.routeInformationParser,
-              routerDelegate: _routerDelegate,
-              theme: ThemeData(
-                useMaterial3: true,
-                colorSchemeSeed: Colors.blue,
-              ),
-              localizationsDelegates: const <LocalizationsDelegate<Object>>[
-                Il8n.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: Il8n.delegate.supportedLocales,
-            );
-          },
-        );
-      },
+          return AutoViewModelBuilder<AppViewModel>(
+            builder: (BuildContext context, AppViewModel viewModel) {
+              return MaterialApp.router(
+                routeInformationParser: _rootStackRouter.routeInformationParser,
+                routerDelegate: _routerDelegate,
+                theme: ThemeData(
+                  useMaterial3: true,
+                  colorSchemeSeed: Colors.blue,
+                  fontFamily: 'Roboto',
+                ),
+                localizationsDelegates: const <LocalizationsDelegate<Object>>[
+                  Il8n.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: Il8n.delegate.supportedLocales,
+              );
+            },
+          );
+        },
+      ),
     );
   }
 

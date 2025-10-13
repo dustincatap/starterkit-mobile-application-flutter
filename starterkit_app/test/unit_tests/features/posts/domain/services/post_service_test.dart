@@ -7,7 +7,6 @@ import 'package:starterkit_app/core/infrastructure/logging/logger.dart';
 import 'package:starterkit_app/core/infrastructure/platform/connectivity_service.dart';
 import 'package:starterkit_app/features/post/data/local/post_repository.dart';
 import 'package:starterkit_app/features/post/data/remote/post_api.dart';
-import 'package:starterkit_app/features/post/domain/mappers/post_mapper.dart';
 import 'package:starterkit_app/features/post/domain/models/post_data_contract.dart';
 import 'package:starterkit_app/features/post/domain/models/post_entity.dart';
 import 'package:starterkit_app/features/post/domain/services/post_service.dart';
@@ -48,7 +47,6 @@ void main() {
         MockLogger(),
         mockPostApi,
         mockPostRepository,
-        const PostMapperImpl(),
         mockConnectivityService,
       );
     }

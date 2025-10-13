@@ -8,7 +8,6 @@ import 'package:starterkit_app/features/post/domain/models/post_entity.dart';
 import 'package:starterkit_app/features/post/domain/services/post_service.dart';
 import 'package:starterkit_app/features/post/presentation/view_models/post_details_view_model.dart';
 
-import '../../../../../test_matchers.dart';
 import 'post_details_view_model_test.mocks.dart';
 
 @GenerateNiceMocks(<MockSpec<Object>>[
@@ -17,17 +16,15 @@ import 'post_details_view_model_test.mocks.dart';
 ])
 void main() {
   group(PostDetailsViewModel, () {
-    late MockLogger mockLogger;
     late MockPostService mockPostService;
 
     setUp(() {
-      mockLogger = MockLogger();
       mockPostService = MockPostService();
       provideDummy<Result<PostEntity>>(Failure<PostEntity>(Exception()));
     });
 
     PostDetailsViewModel createUnitToTest() {
-      return PostDetailsViewModel(mockPostService, mockLogger);
+      return PostDetailsViewModel(mockPostService);
     }
 
     group('onInitialize', () {
@@ -43,13 +40,15 @@ void main() {
         expect(unit.post.value, equals(expectedPost));
       });
 
-      test('should log error when result is failure', () async {
+      test('should set post to empty when result is failure', () async {
         final PostDetailsViewModel unit = createUnitToTest();
-        when(mockPostService.getPost(any)).thenAnswer((_) async => Failure<PostEntity>(Exception()));
+        const int expectedPostId = 1;
+        when(mockPostService.getPost(expectedPostId)).thenAnswer((_) async => Failure<PostEntity>(Exception()));
 
-        await unit.onInitialize(const PostDetailsViewRouteArgs(postId: 1));
+        await unit.onInitialize(const PostDetailsViewRouteArgs(postId: expectedPostId));
 
-        verify(mockLogger.log(LogLevel.error, anyInstanceOf<String>()));
+        verify(mockPostService.getPost(expectedPostId)).called(1);
+        expect(unit.post.value, equals(PostEntity.empty));
       });
     });
   });

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:starterkit_app/core/domain/models/result.dart';
-import 'package:starterkit_app/core/infrastructure/logging/logger.dart';
 import 'package:starterkit_app/core/presentation/navigation/navigation_router.gr.dart';
 import 'package:starterkit_app/core/presentation/view_models/initializable.dart';
 import 'package:starterkit_app/features/post/domain/models/post_entity.dart';
@@ -10,11 +9,8 @@ import 'package:starterkit_app/features/post/domain/services/post_service.dart';
 @injectable
 class PostDetailsViewModel implements Initializable<PostDetailsViewRouteArgs> {
   final PostService _postService;
-  final Logger _logger;
 
-  PostDetailsViewModel(this._postService, this._logger) {
-    _logger.logFor<PostDetailsViewModel>();
-  }
+  PostDetailsViewModel(this._postService);
 
   final ValueNotifier<PostEntity> _post = ValueNotifier<PostEntity>(PostEntity.empty);
   ValueListenable<PostEntity> get post => _post;
@@ -32,7 +28,7 @@ class PostDetailsViewModel implements Initializable<PostDetailsViewRouteArgs> {
         _post.value = getPostResult.value;
 
       case Failure<PostEntity>():
-        _logger.log(LogLevel.error, 'Failed to get post');
+        _post.value = PostEntity.empty;
     }
   }
 }

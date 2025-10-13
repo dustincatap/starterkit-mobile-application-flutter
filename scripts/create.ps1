@@ -76,7 +76,7 @@ if ($REPLY -notmatch "^[Yy]$") {
     exit
 }
 
-git clone https://github.com/ERNI-Academy/starterkit-mobile-application-flutter.git "$DIR/$PROJECT_REPO_NAME"
+git clone https://github.com/dustincatap/starterkit-mobile-application-flutter.git "$DIR/$PROJECT_REPO_NAME"
 Remove-Item -Recurse -Force "$DIR/$PROJECT_REPO_NAME/.git" -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force "$DIR/$PROJECT_REPO_NAME/.github" -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force "$DIR/$PROJECT_REPO_NAME/.gitmodules" -ErrorAction SilentlyContinue

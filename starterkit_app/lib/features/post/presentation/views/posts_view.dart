@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:context_plus/context_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:starterkit_app/core/presentation/navigation/navigation_router.gr.dart';
 import 'package:starterkit_app/core/presentation/views/view_model_builder.dart';
@@ -17,25 +18,32 @@ class PostsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoViewModelBuilder<PostsViewModel>(
       builder: (BuildContext context, PostsViewModel viewModel) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(context.il8n.posts),
-          ),
-          body: ValueListenableBuilder<PostsListState>(
-            valueListenable: viewModel.postsState,
-            builder: (BuildContext context, PostsListState postsState, _) {
-              return switch (postsState) {
-                PostsListLoadingState _ => const Center(child: CircularProgressIndicator()),
-                PostsListLoadedState _ => _PostsListView(
-                  posts: postsState.posts.toList(),
-                  onTap: context.viewModel<PostsViewModel>().onPostSelected,
-                  onScrollEnd: context.viewModel<PostsViewModel>().onGetPosts,
-                ),
-                PostsListErrorState _ => Center(child: Text(postsState.message)),
-              };
-            },
-          ),
-        );
+        return const _PostsView();
+      },
+    );
+  }
+}
+
+class _PostsView extends StatelessWidget {
+  const _PostsView();
+
+  @override
+  Widget build(BuildContext context) {
+    final PostsViewModel viewModel = context.viewModel<PostsViewModel>();
+    final PostsListState postsState = viewModel.postsState.watch(context);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(context.il8n.posts),
+      ),
+      body: switch (postsState) {
+        PostsListLoadingState _ => const Center(child: CircularProgressIndicator()),
+        PostsListLoadedState _ => _PostsListView(
+          posts: postsState.posts.toList(),
+          onTap: viewModel.onPostSelected,
+          onScrollEnd: viewModel.onGetPosts,
+        ),
+        PostsListErrorState _ => Center(child: Text(postsState.message)),
       },
     );
   }
