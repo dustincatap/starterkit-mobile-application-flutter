@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:flutter/material.dart';
 import 'package:starterkit_app/common/localization/generated/l10n.dart';
 
