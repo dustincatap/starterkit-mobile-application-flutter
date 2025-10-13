@@ -10,28 +10,31 @@ PODS:
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - sqlite3 (3.50.2):
-    - sqlite3/common (= 3.50.2)
-  - sqlite3/common (3.50.2)
-  - sqlite3/dbstatvtab (3.50.2):
+  - sqlite3 (3.50.4):
+    - sqlite3/common (= 3.50.4)
+  - sqlite3/common (3.50.4)
+  - sqlite3/dbstatvtab (3.50.4):
     - sqlite3/common
-  - sqlite3/fts5 (3.50.2):
+  - sqlite3/fts5 (3.50.4):
     - sqlite3/common
-  - sqlite3/math (3.50.2):
+  - sqlite3/math (3.50.4):
     - sqlite3/common
-  - sqlite3/perf-threadsafe (3.50.2):
+  - sqlite3/perf-threadsafe (3.50.4):
     - sqlite3/common
-  - sqlite3/rtree (3.50.2):
+  - sqlite3/rtree (3.50.4):
+    - sqlite3/common
+  - sqlite3/session (3.50.4):
     - sqlite3/common
   - sqlite3_flutter_libs (0.0.1):
     - Flutter
     - FlutterMacOS
-    - sqlite3 (~> 3.50.1)
+    - sqlite3 (~> 3.50.4)
     - sqlite3/dbstatvtab
     - sqlite3/fts5
     - sqlite3/math
     - sqlite3/perf-threadsafe
     - sqlite3/rtree
+    - sqlite3/session
 
 DEPENDENCIES:
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
@@ -61,13 +64,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   connectivity_plus: 2a701ffec2c0ae28a48cf7540e279787e77c447d
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_localization: f43b18844a2b3d2c71fd64f04ffd6b1e64dd54d4
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
-  sqlite3: 3e82a2daae39ba3b41ae6ee84a130494585460fc
-  sqlite3_flutter_libs: 2c48c4ee7217fd653251975e43412250d5bcbbe2
+  sqlite3: 73513155ec6979715d3904ef53a8d68892d4032b
+  sqlite3_flutter_libs: 86f82662868ee26ff3451f73cac9c5fc2a1f57fa
 
-PODFILE CHECKSUM: c4c93c5f6502fe2754f48404d3594bf779584011
+PODFILE CHECKSUM: cc1f88378b4bfcf93a6ce00d2c587857c6008d3b
 
 COCOAPODS: 1.16.2
