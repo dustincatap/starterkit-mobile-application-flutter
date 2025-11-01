@@ -9,7 +9,7 @@ environment:
 dependencies:
   auto_route: ^10.1.0+1
   collection: ^1.19.1
-  connectivity_plus: ^6.1.4
+  connectivity_plus: ^7.0.0
   context_plus: ^6.0.5
   cupertino_icons: ^1.0.8
   dio: ^5.8.0+1
