@@ -7,7 +7,7 @@ environment:
   sdk: ">=3.8.0 <4.0.0"
 
 dependencies:
-  auto_route: ^10.1.0+1
+  auto_route: ^10.2.0
   collection: ^1.19.1
   connectivity_plus: ^6.1.4
   context_plus: ^6.0.5
