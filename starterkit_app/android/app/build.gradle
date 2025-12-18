@@ -70,7 +70,7 @@ println "Building: ${dartDefines.appName} (${appIdComplete}) for ${dartDefines.a
 
 android {
     namespace 'com.example.starterkit.app'
-    compileSdk 35
+    compileSdk 36
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -95,7 +95,7 @@ android {
             applicationIdSuffix appIdSuffix
         }
         minSdkVersion 31
-        targetSdkVersion 35
+        targetSdkVersion 36
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
 
