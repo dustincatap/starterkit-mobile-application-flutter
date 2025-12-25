@@ -1,14 +1,5 @@
 // Workspace-specific code snippets
 {
-    "Concrete/abstract interface class": {
-        "prefix": "cac",
-        "body": [
-            "abstract interface class $className {}",
-            "",
-            "class ${className}Impl implements $className {}",
-        ],
-        "description": "Creates an abstract interface class and a class to implement it"
-    },
     "Creates a ViewModel class": {
         "prefix": "vm",
         "body": [
@@ -33,13 +24,6 @@
             "}",
         ],
         "description": "Creates a ChangeNotifier property"
-    },
-    "Value Notifier Property": {
-        "prefix": "propv",
-        "body": [
-            "final $name = ValueNotifier($type(data: $initialValue));",
-        ],
-        "description": "Creates a ValueNotifier property"
     },
     "Getter Property with Field": {
         "prefix": "propgf",
@@ -72,28 +56,30 @@
     "Creates a navigatable view using a stateless widget": {
         "prefix": "vrsl",
         "body": [
-            "// coverage:ignore-file",
-            "",
-            "class ${1}View extends StatelessWidget with ViewRouteMixin<${1}ViewModel> {",
+            "@RoutePage()",
+            "class ${1}View extends StatelessWidget {",
             "  const ${1}View() : super(key: const Key(${1}ViewRoute.name));",
             "",
             "  @override",
-            "  Widget buildView(BuildContext context, ${1}ViewModel viewModel) {",
-            "    return Scaffold(",
-            "      appBar: AppBar(",
-            "        title: const Text('${1}'),",
-            "      ),",
+            "  Widget build(BuildContext context) {",
+            "    return AutoViewModelBuilder<${1}ViewModel>(",
+            "      builder: (BuildContext context, ${1}ViewModel viewModel) {",
+            "        return Scaffold(",
+            "          appBar: AppBar(",
+            "            title: const Text('${1}'),",
+            "          ),",
+            "        );",
+            "      },",
             "    );",
             "  }",
             "}"
         ],
-        "description": "Creates a navigatable view using a stateless widget",
+        "description": "Creates a navigatable view using a stateless widget"
     },
     "Creates a navigatable view using a stateful widget": {
         "prefix": "vrsf",
         "body": [
-            "// coverage:ignore-file",
-            "",
+            "@RoutePage()",
             "class ${1}View extends StatefulWidget {",
             "  const ${1}View() : super(key: const Key(${1}ViewRoute.name));",
             "",
@@ -101,98 +87,22 @@
             "  State<${1}View> createState() => _${1}ViewState();",
             "}",
             "",
-            "class _${1}ViewState extends State<${1}View> with ViewRouteMixin<${1}ViewModel> {",
+            "class _${1}ViewState extends State<${1}View> {",
             "  @override",
-            "  Widget buildView(BuildContext context, ${1}ViewModel viewModel) {",
-            "    return Scaffold(",
-            "      appBar: AppBar(",
-            "        title: const Text('${1}'),",
-            "      ),",
-            "    );",
-            "  }",
-            "}",
-            ""
-        ],
-        "description": "Creates a navigatable view using a stateful widget"
-    },
-    "Creates a view using a stateless widget": {
-        "prefix": "vsl",
-        "body": [
-            "// coverage:ignore-file",
-            "",
-            "class ${1}View extends StatelessWidget with ViewMixin<${1}ViewModel> {",
-            "  const ${1}View({super.key});",
-            "",
-            "  @override",
-            "  Widget buildView(BuildContext context, ${1}ViewModel viewModel) {",
-            "    return Scaffold(",
-            "      appBar: AppBar(",
-            "        title: const Text('${1}'),",
-            "      ),",
+            "  Widget build(BuildContext context) {",
+            "    return AutoViewModelBuilder<${1}ViewModel>(",
+            "      builder: (BuildContext context, ${1}ViewModel viewModel) {",
+            "        return Scaffold(",
+            "          appBar: AppBar(",
+            "            title: const Text('${1}'),",
+            "          ),",
+            "        );",
+            "      },",
             "    );",
             "  }",
             "}"
         ],
-        "description": "Creates a view using a stateless widget",
-    },
-    "Creates a view using a stateful widget": {
-        "prefix": "vsf",
-        "body": [
-            "// coverage:ignore-file",
-            "",
-            "class ${1}View extends StatefulWidget {",
-            "  const ${1}View({super.key});",
-            "",
-            "  @override",
-            "  State<${1}View> createState() => _${1}ViewState();",
-            "}",
-            "",
-            "class _${1}ViewState extends State<${1}View> with ViewMixin<${1}ViewModel> {",
-            "  @override",
-            "  Widget buildView(BuildContext context, ${1}ViewModel viewModel) {",
-            "    return Scaffold(",
-            "      appBar: AppBar(",
-            "        title: const Text('${1}'),",
-            "      ),",
-            "    );",
-            "  }",
-            "}",
-            ""
-        ],
-        "description": "Creates a view using a stateful widget"
-    },
-    "Creates a child view using a stateless widget": {
-        "prefix": "cvsl",
-        "body": [
-            "class ${0} extends StatelessWidget with ChildViewMixin<${1}ViewModel> {",
-            "  const ${0}();",
-            "",
-            "  @override",
-            "  Widget buildView(BuildContext context, ${1}ViewModel viewModel) {",
-            "    return const Text('${0}');",
-            "  }",
-            "}",
-        ],
-        "description": "Creates a child view using a stateless widget",
-    },
-    "Creates a child view using a stateful widget": {
-        "prefix": "cvsf",
-        "body": [
-            "class ${0} extends StatefulWidget {",
-            "  const ${0}();",
-            "",
-            "  @override",
-            "  State<${0}> createState() => _${0}State();",
-            "}",
-            "",
-            "class _${0}State extends State<${0}> with ChildViewMixin<${1}ViewModel> {",
-            "  @override",
-            "  Widget buildView(BuildContext context, ${1}ViewModel viewModel) {",
-            "    return const Text('${0}');",
-            "  }",
-            "}",
-        ],
-        "description": "Creates a child view using a stateful widget"
+        "description": "Creates a navigatable view using a stateful widget"
     },
     "Creates an injectable dependency": {
         "prefix": "dep",
@@ -233,6 +143,27 @@
             "}"
         ],
         "description": "Creates a JSON class"
+    },
+    "Creates a repository class": {
+        "prefix": "repo",
+        "body": [
+            "// coverage:ignore-file",
+            "",
+            "import 'package:drift/drift.dart';",
+            "import 'package:injectable/injectable.dart';",
+            "import 'package:starterkit_app/core/data/database/app_database.dart';",
+            "import 'package:starterkit_app/core/data/database/base_repository.dart';",
+            "import 'package:starterkit_app/core/data/database/repository.dart';",
+            "",
+            "@lazySingleton",
+            "class ${Name}Repository extends BaseRepository<AppDatabase, ${Name}DataTable, ${Name}DataObject>",
+            "    implements Repository<${Name}DataTable, ${Name}DataObject> {",
+            "  ${Name}Repository(super.attachedDatabase);",
+            "  ",
+            "  // Add feature-specific query methods here",
+            "}"
+        ],
+        "description": "Creates a repository class"
     },
     "Create test group": {
         "prefix": "gtest",
@@ -278,32 +209,5 @@
             "}"
         ],
         "description": "Creates an retrofit API"
-    },
-      "Creates a mapper class": {
-        "prefix": "mapper",
-        "body": [
-          "// coverage:ignore-file",
-          "",
-          "import 'package:auto_mappr_annotation/auto_mappr_annotation.dart';",
-          "import 'package:injectable/injectable.dart';",
-          "import 'package:starterkit_app/core/domain/mapping/object_mapper.dart';",
-          "import '${TM_FILENAME_BASE}.auto_mappr.dart';",
-          "",
-          "abstract interface class ${Name}Mapper implements ObjectMapper {}",
-          "",
-          "@AutoMappr(<MapType<Object, Object>>[",
-          "  MapType<${Name}Source, ${Name}Destination>(),",
-          "])",
-          "@LazySingleton(as: PostMapper)",
-          "class ${Name}MapperImpl extends $${Name}MapperImpl implements ${Name}Mapper {",
-          "  @override",
-          "  T mapObject<S, T>(S? object) => convert(object);",
-          "",
-          "  @override",
-          "  Iterable<T> mapObjects<S, T>(Iterable<S> objects) => convertIterable(objects);",
-          "}",
-          ""
-        ],
-        "description": "Creates a mapper class"
-      }
+    }
 }
