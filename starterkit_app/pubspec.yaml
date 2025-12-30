@@ -30,7 +30,7 @@ dependencies:
   path: ^1.9.1
   path_provider: ^2.1.5
   platform: ^3.1.6
-  retrofit: ^4.9.1
+  retrofit: ^4.9.2
   uuid: ^4.5.2
 
 dev_dependencies:
