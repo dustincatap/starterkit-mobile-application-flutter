@@ -41,7 +41,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   full_coverage: ^1.0.0
-  injectable_generator: ^2.11.1
+  injectable_generator: ^2.12.0
   intl_utils: ^2.8.13
   json_serializable: ^6.11.3
   mockito: ^5.6.1
