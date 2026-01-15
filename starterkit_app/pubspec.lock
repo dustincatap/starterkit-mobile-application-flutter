@@ -521,10 +521,10 @@ packages:
     dependency: "direct dev"
     description:
       name: injectable_generator
-      sha256: "4a3f3010217012b44d55b73fd7a910017f2dfe5157d6b8561a929c2409e08c4e"
+      sha256: "5168f8189e8a3a5ec6cbaeb5249e99f53d51b6594f9abbc3e482f95ae1d96bfb"
       url: "https://pub.dev"
     source: hosted
-    version: "2.11.1"
+    version: "2.12.0"
   intl:
     dependency: "direct main"
     description:
@@ -593,10 +593,10 @@ packages:
     dependency: transitive
     description:
       name: lean_builder
-      sha256: f3ddb3b2c29285a726d739f3eaa4877a2478068f975b51231d032711efbc02d8
+      sha256: "6af3cfbf34400eb14b89fe20111e5981e7083362f00ea10b9ed2a6e833250d76"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.4"
+    version: "0.1.6"
   logging:
     dependency: transitive
     description:
@@ -1054,10 +1054,10 @@ packages:
     dependency: transitive
     description:
       name: watcher
-      sha256: f52385d4f73589977c80797e60fe51014f7f2b957b5e9a62c3f6ada439889249
+      sha256: "592ab6e2892f67760543fb712ff0177f4ec76c031f02f5b4ff8d3fc5eb9fb61a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.0"
+    version: "1.1.4"
   web:
     dependency: transitive
     description:
