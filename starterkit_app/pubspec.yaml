@@ -45,7 +45,7 @@ dev_dependencies:
   intl_utils: ^2.8.13
   json_serializable: ^6.11.3
   mockito: ^5.6.1
-  retrofit_generator: ^10.2.0
+  retrofit_generator: ^10.2.1
 
 dependency_overrides:
   analyzer: ^8.2.0
