@@ -332,8 +332,8 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  cocoapods
-  fastlane
+  cocoapods (~> 1.16.2)
+  fastlane (~> 2.232.1)
   fastlane-plugin-json
   fastlane-plugin-versioning_android
 
