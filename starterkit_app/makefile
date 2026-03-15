@@ -1,6 +1,7 @@
 codegen:
 	fvm dart run build_runner build --delete-conflicting-outputs
 	fvm dart run intl_utils:generate
+	fvm dart run full_coverage
 
 full_coverage:
 	fvm dart run full_coverage

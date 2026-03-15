@@ -205,7 +205,7 @@
             "@RestApi()",
             "abstract interface class ${ApiName}Api {",
             "  @factoryMethod",
-            "  factory ${ApiName}Api(Dio dio) = _${ApiName}Api",
+            "  factory ${ApiName}Api(DioProvider dio) => _${ApiName}Api(dio.create<${ApiName}Api>());",
             "}"
         ],
         "description": "Creates an retrofit API"
