@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:dio/dio.dart' hide Headers;
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
