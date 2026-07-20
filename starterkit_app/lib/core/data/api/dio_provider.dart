@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:starterkit_app/core/data/api/debug_logging_interceptor.dart';
 import 'package:starterkit_app/core/data/api/internet_connection_interceptor.dart';
+import 'package:starterkit_app/core/infrastructure/environment/environment_variables.dart';
 import 'package:starterkit_app/core/infrastructure/logging/logger.dart';
 import 'package:starterkit_app/core/infrastructure/platform/connectivity_service.dart';
 
@@ -20,8 +21,9 @@ class DioProvider {
 
   final Logger _logger;
   final ConnectivityService _connectivityService;
+  final EnvironmentVariables _environmentVariables;
 
-  DioProvider(this._logger, this._connectivityService);
+  DioProvider(this._logger, this._connectivityService, this._environmentVariables);
 
   Dio create<TApi>() {
     _logger.logFor<TApi>();
@@ -29,6 +31,7 @@ class DioProvider {
     final Dio dio =
         Dio(
             BaseOptions(
+              baseUrl: _environmentVariables.appServerUrl,
               connectTimeout: _connectionTimeOut,
               receiveTimeout: _requestTimeOut,
               sendTimeout: _sendTimeout,

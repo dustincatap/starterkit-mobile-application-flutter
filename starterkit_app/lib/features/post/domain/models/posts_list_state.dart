@@ -5,11 +5,11 @@ sealed class PostsListState {
   const PostsListState();
 }
 
-class PostsListLoadingState extends PostsListState {
+final class PostsListLoadingState extends PostsListState {
   const PostsListLoadingState();
 }
 
-class PostsListLoadedState extends PostsListState with EquatableMixin {
+final class PostsListLoadedState extends PostsListState with Equatable {
   const PostsListLoadedState(this.posts);
 
   final Iterable<PostEntity> posts;
@@ -18,7 +18,7 @@ class PostsListLoadedState extends PostsListState with EquatableMixin {
   List<Object?> get props => <Object?>[posts];
 }
 
-class PostsListErrorState extends PostsListState with EquatableMixin {
+final class PostsListErrorState extends PostsListState with Equatable {
   const PostsListErrorState(this.message);
 
   final String message;
