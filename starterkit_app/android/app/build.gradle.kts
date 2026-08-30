@@ -66,7 +66,8 @@ println("Building: ${dartDefines["appName"]} ($appIdComplete) for ${dartDefines[
 android {
     // Make sure that the namespace matches the package in MainActivity.kt and its folder structure
     namespace = "com.mycompany.starterkit.app"
-    compileSdk = 36
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -86,8 +87,8 @@ android {
         if (appIdSuffix.isNotBlank()) {
             applicationIdSuffix = appIdSuffix
         }
-        minSdk = 31
-        targetSdk = 36
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
 

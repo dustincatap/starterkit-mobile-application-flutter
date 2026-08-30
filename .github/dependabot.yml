@@ -15,7 +15,4 @@ updates:
     schedule:
       interval: monthly
 
-  - package-ecosystem: bundler
-    directory: /starterkit_app
-    schedule:
-      interval: monthly
+

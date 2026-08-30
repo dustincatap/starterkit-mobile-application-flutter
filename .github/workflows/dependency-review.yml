@@ -27,3 +27,7 @@ jobs:
         
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@3c4e3dcb1aa7874d2c16be7d79418e9b7efd6261 # v4.8.2
+        with:
+          fail-on-scopes: runtime
+          # Ignored since we cannot update `excon` directly. It is used in `fastlane`.
+          allow-ghsas: 'GHSA-48rx-c7pg-q66r'
