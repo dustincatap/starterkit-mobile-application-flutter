@@ -20,6 +20,10 @@ analyzer:
     - test/**/*.gr.dart
     - test/**/*.g.dart
     - test/full_coverage_test.dart
+    - build/**
+    - android/**
+    - ios/**
+    - windows/**
   errors:
     # Without ignore here, we cause import of all_lint_rules to warn, because some rules conflict.
     # We explicitly enabled even conflicting rules and are fixing the conflicts in this file.
