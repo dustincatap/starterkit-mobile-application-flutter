@@ -27,7 +27,7 @@ permissions: {}
 
 jobs:
   run-code-analysis:
-    runs-on: macos-latest
+    runs-on: macos-26
     permissions: {}
     steps:
       - name: Harden Runner
