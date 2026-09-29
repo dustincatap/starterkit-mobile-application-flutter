@@ -39,8 +39,10 @@ class DebugLoggingInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
+    final String tag = '[RES#${shortHash(err.requestOptions)}]';
+    _logBody(tag, err.response?.data);
+
     if (err.response?.statusCode != null && err.response?.statusMessage != null) {
-      final String tag = '[RES#${shortHash(err.requestOptions)}]';
       _logger.log(LogLevel.error, '$tag Failed: ${err.response?.statusCode} ${err.response?.statusMessage}');
     }
 

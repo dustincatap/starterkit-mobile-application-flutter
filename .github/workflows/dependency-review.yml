@@ -27,3 +27,7 @@ jobs:
         
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@3c4e3dcb1aa7874d2c16be7d79418e9b7efd6261 # v4.8.2
+        with:
+          fail-on-scopes: runtime
+          # Ignored since these dependencies are only used in Fastlane and are not part of the production code.
+          allow-ghsas: 'GHSA-48rx-c7pg-q66r, GHSA-9hj4-r449-hfvc, GHSA-47m2-wp7j-p9vc'
