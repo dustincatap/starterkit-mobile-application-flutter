@@ -22,7 +22,7 @@ dependencies:
   flutter_localization: ^0.4.1
   flutter_localizations:
     sdk: flutter
-  get_it: ^9.2.1
+  get_it: ^9.3.0
   injectable: ^2.7.1+4
   intl: ^0.20.2
   json_annotation: ^4.12.0
