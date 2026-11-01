@@ -13,7 +13,7 @@ dependencies:
   context_plus: ^6.0.7
   cupertino_icons: ^1.0.9
   dio: ^5.10.0
-  drift: ^2.34.2
+  drift: ^2.34.4
   drift_flutter: ^0.3.1
   equatable: ^2.1.0
   file: ^7.0.1
