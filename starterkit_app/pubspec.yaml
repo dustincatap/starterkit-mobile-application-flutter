@@ -37,7 +37,7 @@ dev_dependencies:
   auto_route_generator: ^10.5.0
   build_runner: ^2.12.2
   drift_dev: ^2.32.0
-  flutter_gen_runner: ^5.13.0+1
+  flutter_gen_runner: ^5.15.0
   flutter_test:
     sdk: flutter
   full_coverage: ^1.0.0
