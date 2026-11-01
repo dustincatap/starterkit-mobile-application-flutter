@@ -11,7 +11,7 @@ dependencies:
   collection: ^1.19.1
   connectivity_plus: ^7.3.0
   context_plus: ^6.0.7
-  cupertino_icons: ^1.0.9
+  cupertino_icons: ^2.0.0
   dio: ^5.10.0
   drift: ^2.34.2
   drift_flutter: ^0.3.1
